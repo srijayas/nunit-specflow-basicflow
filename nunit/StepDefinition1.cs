@@ -7,7 +7,7 @@ using TechTalk.SpecFlow;
 namespace nunit
 {
     [Binding]
-    public sealed class StepDefinition1: FeatureBase
+    public sealed class StepDefinition1
     {
 
         [Given("I have entered (.*) into the calculator")]

@@ -3,18 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using TechTalk.SpecFlow;
-
+using Xamarin.UITest;
 namespace nunit
 {
     [Binding]
     public sealed class Hooks1
     {
-        // For additional details on SpecFlow hooks see http://go.specflow.org/doc-hooks
-
         [BeforeTestRun]
         public static void BeforeTestRun()
         {
             Console.WriteLine("Hooks.BeforeTestRun");
+            
         }
 
         [BeforeFeature]
