@@ -1,11 +1,17 @@
 ﻿Feature: SpecFlowFeature1
-	In order to avoid silly mistakes
-	As a math idiot
-	I want to be told the sum of two numbers
 
 @mytag
-Scenario: Verify Add Task
-	Given I have entered 50 into the calculator
-	
+Scenario: Add a new task
+	Given I open the app
+	When I click on Add Task button
+	And I enter Name "Automation Task" and Notes "test notes" 
+	And I click Save
+	Then the task "Automation Task" is saved and listed
 
+Scenario: Edit the task
+	Given I open the app
+	When I open the task "Automation Task"
+	And I enter Name "Automation Task-Upd" and Notes "test notes" 
+	And I click Save
+	Then the task "Automation Task-Upd" is saved and listed
 	
