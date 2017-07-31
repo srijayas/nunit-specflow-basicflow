@@ -32,9 +32,12 @@ namespace nunit
             app.WaitForElement(e => e.TextField("txtName"));
             app.ClearText(e => e.TextField("txtName"));
             app.EnterText(e => e.TextField("txtName"), name);
+            System.Threading.Thread.Sleep(1000);
+
             app.ClearText(e => e.TextField("txtNotes"));
             app.EnterText(e => e.TextField("txtNotes"), notes);
-
+            System.Threading.Thread.Sleep(1000);
+            // app.Repl();
         }
 
         [When(@"I click Save")]
@@ -54,7 +57,9 @@ namespace nunit
         [When(@"I open the task ""(.*)""")]
         public void WhenIOpenTheTask(string taskName)
         {
+            app.Query(e => e.Marked(taskName)).Length.ShouldBeGreaterThan(0);
             app.DoubleTap(e => e.Marked(taskName));
+            
         }
 
 

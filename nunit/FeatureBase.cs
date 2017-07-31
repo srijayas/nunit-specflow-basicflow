@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using TechTalk.SpecFlow;
 using NUnit.Framework;
+using Xamarin.UITest;
 namespace nunit
 {
     
@@ -11,9 +12,12 @@ namespace nunit
     public class FeatureBase
     {
         
-        public FeatureBase(string type)
+        public FeatureBase(Platform  type)
         {
-            Console.WriteLine("FeatureBase constructor for " + type);
+
+            TestContext.CurrentContext.Test.Properties.Add("fc_type", type);
+            Console.WriteLine("FeatureBase constructor for " + type.ToString());
+            
         }
     }
 }

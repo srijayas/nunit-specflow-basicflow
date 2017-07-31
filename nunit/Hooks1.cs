@@ -20,19 +20,26 @@ namespace nunit
         [BeforeFeature()]
         public static void BeforeFeature()
         {
-            Console.WriteLine("Hooks.BeforeFeature");
-            Platform platform = Platform.Android;
+            //TestContext.CurrentContext.Test.Arguments[0])  available only for nunit 3+
+            FeatureContext.Current.Add("fc_type", (Platform)TestContext.CurrentContext.Test.Properties["fc_type"]);// TestContext.CurrentContext.Test.Arguments[0]);
+            Console.WriteLine("Hooks.BeforeFeature " + FeatureContext.Current["fc_type"].ToString());
+            Platform platform = (Platform) FeatureContext.Current["fc_type"]; //Platform.Android;
             IApp app;
             //-----
             if (platform == Platform.Android)
             {
-
+                
                 string ass = AppDomain.CurrentDomain.BaseDirectory; //System.Reflection.Assembly.GetExecutingAssembly().Location;
                 app = ConfigureApp
                     .Android.ApkFile(System.IO.Path.GetDirectoryName(ass) + "/Binary/com.xamarin.samples.taskydroidnew.exampleapp.apk")
-                    .StartApp(Xamarin.UITest.Configuration.AppDataMode.DoNotClear);
+                    .StartApp(Xamarin.UITest.Configuration.AppDataMode.Auto);
                 FeatureContext.Current.Add("fc_app", app);
 
+            }
+            else
+            {
+                Assert.Ignore("Ignored - iOS not defined");
+                
             }
 
            
