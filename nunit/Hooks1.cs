@@ -38,7 +38,7 @@ namespace nunit
             }
             else
             {
-                Assert.Ignore("Ignored - iOS not defined");
+                Assert.Pass("Ignored - iOS not defined");
                 
             }
 
