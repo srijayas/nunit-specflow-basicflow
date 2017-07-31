@@ -76,6 +76,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>SpecFlowFeature1.feature</DependentUpon>
     </Compile>
+    <Compile Include="SpecFlowFeature2.cs" />
     <Compile Include="SpecFlowFeature2.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
