@@ -15,7 +15,7 @@ namespace nunit
         public SpecFlowFeature2Feature(Platform type) : base(type)
         {
 
-            Console.WriteLine("SpecFlowFeature2Feature constructor for " + type);
+            Console.WriteLine("SpecFlowFeature2Feature constructor for " + type.ToString());
         }
     }
 }
