@@ -35,9 +35,9 @@ namespace nunit
            
             app.WaitForElement(TaskPage.instance.txtName);
             WidgetHelper.inst.EnterTextField(TaskPage.instance.txtName, name);
-            System.Threading.Thread.Sleep(500);
+            System.Threading.Thread.Sleep(1000);
             WidgetHelper.inst.EnterTextField(TaskPage.instance.txtNotes, notes);
-            System.Threading.Thread.Sleep(500);
+            System.Threading.Thread.Sleep(1000);
             //app.ClearText(e => e.TextField("txtName"));
             //app.EnterText(e => e.TextField("txtName"), name);
             //app.ClearText(e => e.TextField("txtNotes"));
@@ -68,6 +68,18 @@ namespace nunit
             
         }
 
+        [When(@"I click Delete")]
+        public void WhenIClickDelete()
+        {
+            app.Tap(TaskPage.instance.btnDeleteTask);
+        }
+
+        [Then(@"the task ""(.*)"" is deleted from the list")]
+        public void ThenTheTaskIsDeletedFromTheList(string taskName)
+        {
+            app.WaitForElement(e => e.Marked("lstTasks"));
+            app.Query(e => e.Marked(taskName)).Length.ShouldEqual(0);
+        }
 
     }
 }

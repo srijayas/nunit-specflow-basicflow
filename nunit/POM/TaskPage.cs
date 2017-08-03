@@ -37,7 +37,16 @@ namespace nunit.POM
                     return (e => e.TextField("txtName"));
             }
         }
-
+        public Func<Xamarin.UITest.Queries.AppQuery, Xamarin.UITest.Queries.AppQuery> btnDeleteTask
+        {
+            get
+            {
+                if (type is Platform.Android)
+                    return (e => e.Button("btnCancelDelete"));
+                else //iOS placeholder
+                    return (e => e.Button("btnCancelDelete"));
+            }
+        }
         public Func<Xamarin.UITest.Queries.AppQuery, Xamarin.UITest.Queries.AppQuery> txtNotes
         {
             get

@@ -3,6 +3,10 @@
 	As a math idiot
 	I want to be told the sum of two numbers
 
-@mytag
-Scenario: Add three numbers
-	Given I have entered 50 into the calculator
+@TC#3
+Scenario: Delete the task
+	Given I open the app
+	When I open the task "Automation Task-Upd"
+	#And I enter Name "Automation Task-Upd" and Notes "test notes" 
+	And I click Delete
+	Then the task "Automation Task-Upd" is deleted from the list
