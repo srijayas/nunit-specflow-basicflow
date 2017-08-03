@@ -27,7 +27,7 @@ namespace nunit
         {
             Console.WriteLine("Hooks.BeforeTestRun");
             hInst = new Hooks1();
-
+            ResetEmulator();
             //----
             // Test Rail:
             if (ConfigurationManager.AppSettings["test_rail_update"] == "true")
@@ -37,6 +37,17 @@ namespace nunit
                 
             }
 
+        }
+
+        static void ResetEmulator()
+        {
+
+            if (TestEnvironment.Platform.Equals(TestPlatform.Local))
+            {
+                string adbPath = System.IO.Path.Combine(Environment.GetEnvironmentVariable("ANDROID_SDK_ROOT"), "platform-tools", "adb.exe");
+                var eraseProcess = System.Diagnostics.Process.Start(adbPath, "shell pm uninstall com.xamarin.samples.taskydroidnew.exampleapp");
+                eraseProcess.WaitForExit();
+            }
         }
 
         [BeforeFeature()]
@@ -128,6 +139,7 @@ namespace nunit
         [AfterStep]
         public static void AfterStep()
         {
+            Console.WriteLine(new String('-',20));
             if (hInst._testRailIntegration && hInst._testCaseTagPresent)
             {
                 List<StepResultFields> lststepres = null;
