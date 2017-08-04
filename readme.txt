@@ -28,6 +28,7 @@ To Run:
 * Run on Xamarin cloud:
 "%WORKSPACE%\packages\Xamarin.UITest.2.0.9\tools\test-cloud.exe" submit "%WORKSPACE%\nunit\bin\Debug\Binary\com.xamarin.samples.taskydroidnew.exampleapp.apk" <api_key> --devices <deviceid> --series "POC-singleDevice" --locale "en_US" --user srijaya.suresh@slalom.com --assembly-dir "%WORKSPACE%\nunit\bin\Debug" --nunit-xml "nresults.xml"
 
+[Note: %WORKSPACE% here represents the solution directory. I use Jenkins for CI and these are the commands used for running tests by the Jenkins test job.]
 
 Issues encountered and resolution/workaround:
 --------------------------------------------
