@@ -34,19 +34,22 @@ namespace nunit
             {
                 hInst._testRailIntegration = true;
                 hInst._testRail = new TestRail();
-                
             }
 
         }
 
         static void ResetEmulator()
         {
-
-            if (TestEnvironment.Platform.Equals(TestPlatform.Local))
+            if ((Platform)TestContext.CurrentContext.Test.Properties["fc_type"] == Platform.Android)
             {
-                string adbPath = System.IO.Path.Combine(Environment.GetEnvironmentVariable("ANDROID_SDK_ROOT"), "platform-tools", "adb.exe");
-                var eraseProcess = System.Diagnostics.Process.Start(adbPath, "shell pm uninstall com.xamarin.samples.taskydroidnew.exampleapp");
-                eraseProcess.WaitForExit();
+                if (TestEnvironment.Platform.Equals(TestPlatform.Local))
+                {
+
+                    Console.WriteLine("Resetting the local Android emulator...");
+                    string adbPath = System.IO.Path.Combine(Environment.GetEnvironmentVariable("ANDROID_SDK_ROOT"), "platform-tools", "adb.exe");
+                    var eraseProcess = System.Diagnostics.Process.Start(adbPath, "shell pm uninstall com.xamarin.samples.taskydroidnew.exampleapp");
+                    eraseProcess.WaitForExit();
+                }
             }
         }
 
@@ -105,7 +108,7 @@ namespace nunit
                 tcid = tcid.Split('#')[1];
                 ScenarioContext.Current.Add("tr_tcid", tcid);
 
-                // Add a test run to plan ----------------
+     
                 // Create a run entry once for the Feature if not created already --------------
                 // This is because a caseid is needed inorder to create a run entry.
                 string planID = hInst._testPlan["id"].ToString();

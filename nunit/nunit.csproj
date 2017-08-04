@@ -110,12 +110,6 @@
       <LastGenOutput>SpecFlowFeature2.feature.cs</LastGenOutput>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\..\RND\Mobile\TaskyPro\Tasky.Droid\Tasky.Droid.csproj">
-      <Project>{ea729fe3-7050-4f2f-a9e8-a950e898aeb9}</Project>
-      <Name>Tasky.Droid</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
